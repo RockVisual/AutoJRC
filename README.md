@@ -3,6 +3,21 @@ Automatic Joint Roughness Coefficient Framework
 
 AutoJRC is an automatic framework for estimating the Joint Roughness Coefficient (JRC) of rock surfaces from images using computer vision techniques. It integrates modules for 3D reconstruction, model scaling and alignment, semantic segmentation, point cloud post-processing, and adaptive JRC estimation. The full pipeline takes approximately 10 minutes per scene, significantly improving the efficiency of field investigations.
 
+## Model Download
+
+We provide a pretrained semantic segmentation model `JRCNet.pth` (943 MB), available on the [Releases page](https://github.com/RockVisual/AutoJRC/releases). This model is used to extract semantic regions from reconstructed rock surface images.
+
+### Model Description
+
+The segmentation model `JRCNet.pth` was trained to accurately identify the following semantic classes in rock face imagery:
+
+- RockFace: Rock joint surfaces of interest
+- POB: Portable orientation board used for georeferencing
+- Other: Unrelated rock surfaces
+- Background: All non-relevant areas
+
+To use this model in the pipeline, place it in the segmentation module directory and load it in `04_segmentation(yuyifenge).py`.
+
 ## Pipeline Structure
 
 00_SfM-based shooting parameter selection algorithm  
